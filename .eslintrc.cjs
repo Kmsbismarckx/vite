@@ -11,6 +11,7 @@ module.exports = {
   plugins: ["react-refresh", "prettier"],
   rules: {
     "react-refresh/only-export-components": "warn",
-    "prettier/prettier": "warn"
+    "prettier/prettier": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn"
   }
 };
