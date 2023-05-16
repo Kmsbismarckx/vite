@@ -1,29 +1,28 @@
+import { renderTestApp } from '@/tests/helpers/renderTestApp.tsx';
+
 import { describe, it } from 'vitest';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { Home } from '@/pages/Home/Home.tsx';
+import { fireEvent, screen } from '@testing-library/react';
 
 describe('Home', () => {
   it('Renders hello world', () => {
-    render(<Home />);
+    renderTestApp(null);
 
     const helloWorldElement = screen.getByText(/hello world/i);
-    const buttonElement = screen.getByRole('button');
 
     expect(helloWorldElement).toBeInTheDocument();
     expect(helloWorldElement);
 
-    expect(buttonElement).toBeInTheDocument();
     screen.debug();
   });
 
   it('Renders data', async () => {
-    render(<Home />);
+    renderTestApp(null);
 
     const dataElement = await screen.findByText(/data/i);
     expect(dataElement).toBeInTheDocument();
   });
   it('Click event', () => {
-    render(<Home />);
+    renderTestApp(null);
 
     const button = screen.getByTestId('toggle-button');
     expect(screen.queryByTestId('toggle-element')).toBeNull();
@@ -33,7 +32,7 @@ describe('Home', () => {
     expect(screen.queryByTestId('toggle-element')).toBeNull();
   });
   it('input', () => {
-    render(<Home />);
+    renderTestApp(null);
 
     const inputElement = screen.getByPlaceholderText(/input value/i);
 

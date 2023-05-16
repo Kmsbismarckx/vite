@@ -1,11 +1,9 @@
 import { describe, it, vi } from 'vitest';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import { Users } from '@/Users/Users.tsx';
 import { User } from '@/getData/types.ts';
 import axios from 'axios';
-import { MemoryRouter } from 'react-router-dom';
-import { AppRouter } from '@/App.tsx';
-import { renderWithRouter } from '@/tests/helpers/renderWithRouter.tsx';
+import { renderTestApp } from '@/tests/helpers/renderTestApp.tsx';
 
 type Response = { data: undefined | User[] };
 
@@ -36,12 +34,7 @@ describe('users', () => {
     // @ts-ignore
     axios.get.mockResolvedValue({ data: response.data });
 
-    render(
-      <MemoryRouter>
-        <AppRouter />
-        <Users />
-      </MemoryRouter>
-    );
+    renderTestApp(<Users />);
 
     const users = await screen.findAllByTestId('user-item');
 
@@ -55,7 +48,7 @@ describe('users', () => {
     // @ts-ignore
     axios.get.mockResolvedValue({ data: response.data });
 
-    renderWithRouter(<Users />);
+    renderTestApp(<Users />);
 
     const users = await screen.findAllByTestId('user-item');
 

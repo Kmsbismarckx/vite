@@ -3,14 +3,14 @@ import { getCounterValue } from '@/store/reducers/selectors/getCounterValue/getC
 import { decrement, increment } from '@/store/reducers/counterSlice.ts';
 
 export const Counter = () => {
-  const dispanch = useDispatch();
+  const dispatch = useDispatch();
   const value = useSelector(getCounterValue);
 
   const onIncrement = () => {
-    dispanch(increment());
+    dispatch(increment());
   };
   const onDecrement = () => {
-    dispanch(decrement());
+    dispatch(decrement());
   };
 
   return (

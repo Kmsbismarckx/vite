@@ -1,19 +1,13 @@
 import { describe, it } from 'vitest';
-import { renderWithRouter } from '@/tests/helpers/renderWithRouter.tsx';
+import { renderTestApp } from '@/tests/helpers/renderTestApp.tsx';
 import { fireEvent, screen } from '@testing-library/react';
 import { Navbar } from '@/components/Navbar/Navbar.tsx';
 
 describe('Users test', () => {
   it('about', () => {
-    renderWithRouter(<Navbar />);
-
-    const aboutLink = screen.getByTestId('about-link');
-
-    fireEvent.click(aboutLink);
-    expect(screen.getByTestId('about-page')).toBeInTheDocument();
-  });
-  it('about', () => {
-    renderWithRouter(<Navbar />);
+    renderTestApp(<Navbar />, {
+      route: '/',
+    });
 
     const aboutLink = screen.getByTestId('about-link');
 
@@ -21,7 +15,9 @@ describe('Users test', () => {
     expect(screen.getByTestId('about-page')).toBeInTheDocument();
   });
   it('home', () => {
-    renderWithRouter(<Navbar />);
+    renderTestApp(<Navbar />, {
+      route: '/',
+    });
 
     const homeLink = screen.getByTestId('home-link');
 
@@ -29,7 +25,9 @@ describe('Users test', () => {
     expect(screen.getByTestId('home-page')).toBeInTheDocument();
   });
   it('user', () => {
-    renderWithRouter(<Navbar />);
+    renderTestApp(<Navbar />, {
+      route: '/',
+    });
 
     const usersLink = screen.getByTestId('users-link');
 

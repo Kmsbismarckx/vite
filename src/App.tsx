@@ -5,6 +5,8 @@ import { AboutPage } from '@/pages/AboutPage.tsx';
 import { Users } from '@/Users/Users.tsx';
 import { UserDetailsPage } from '@/pages/UserDetailsPage.tsx';
 import { Navbar } from '@/components/Navbar/Navbar.tsx';
+import { createReduxStore } from '@/store/store.ts';
+import { Provider } from 'react-redux';
 
 export const AppRouter = () => {
   return (
@@ -20,9 +22,11 @@ export const AppRouter = () => {
 
 export const WrappedApp = () => {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <AppRouter />
-    </BrowserRouter>
+    <Provider store={createReduxStore()}>
+      <BrowserRouter>
+        <Navbar />
+        <AppRouter />
+      </BrowserRouter>
+    </Provider>
   );
 };
